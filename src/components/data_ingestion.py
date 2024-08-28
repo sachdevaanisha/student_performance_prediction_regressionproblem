@@ -2,10 +2,10 @@ import os
 import sys
 from src.exception import CustomException
 from src.logger import logging
-# from src.components.data_transformation import DataTransformation
-# from src.components.data_transformation import DataTransformationConfig
-# from src.components.model_trainer import ModelTrainer
-# from src.components.model_trainer import ModelTrainerConfig
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformationConfig
+from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
 
 import pandas as pd
 from dataclasses import dataclass
@@ -43,11 +43,10 @@ if __name__ == "__main__":
     obj = DataIngestion()
     raw_data = obj.initiate_data_ingestion()
 
-    # data_transformation = DataTransformation()
-    # X_train, X_test, y_train, y_test = data_transformation.initiate_data_transformation(raw_data)
+    data_transformation = DataTransformation()
+    X_train, X_test, y_train, y_test = data_transformation.initiate_data_transformation(raw_data)
 
+    model_trainer = ModelTrainer()
+    best_model = model_trainer.initiate_model_trainer(X_train, X_test, y_train, y_test)
 
-    # model_trainer = ModelTrainer()
-    # best_model = model_trainer.initiate_model_trainer(X_train, X_test, y_train, y_test)
-
-    # print("Best Model:", best_model)
+    print("Best Model:", best_model)
