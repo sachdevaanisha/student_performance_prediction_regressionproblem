@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Exam Performance Indicator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .welcome {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .welcome h1 {
+            font-size: 2rem;
+            color: #343a40;
+        }
+        .welcome p {
+            font-size: 1.25rem;
+            color: #6c757d;
+        }
+        .btn-link {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome">
+        <h1>Welcome to the Student Exam Performance Indicator</h1>
+        <p>This application allows you to predict the math score of a student based on various factors such as gender, race/ethnicity, parental level of education, lunch type, test preparation course, reading score, and writing score.</p>
+        <p>To get a prediction, please navigate to <a href="{{ url_for('predict_datapoint') }}" class="btn btn-link">Predict Data</a>.</p>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

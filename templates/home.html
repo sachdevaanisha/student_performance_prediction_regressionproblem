@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Score Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="text-center">Math Score Prediction</h1>
+            <form action="{{ url_for('predict_datapoint') }}" method="post">
+                <legend class="text-center">Enter Student Details</legend>
+                
+                <div class="form-group">
+                    <label class="form-label">Gender</label>
+                    <select class="form-control" name="gender" placeholder="Enter your Gender" required>
+                        <option class="placeholder" selected disabled value="">Select your Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Race or Ethnicity</label>
+                    <select class="form-control" name="race/ethnicity" placeholder="Enter your Ethnicity" required>
+                        <option class="placeholder" selected disabled value="">Select Ethnicity</option>
+                        <option value="group A">Group A</option>
+                        <option value="group B">Group B</option>
+                        <option value="group C">Group C</option>
+                        <option value="group D">Group D</option>
+                        <option value="group E">Group E</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Parental Level of Education</label>
+                    <select class="form-control" name="parental level of education" placeholder="Enter your Parent Education" required>
+                        <option class="placeholder" selected disabled value="">Select Parent Education</option>
+                        <option value="associate's degree">Associate's Degree</option>
+                        <option value="bachelor's degree">Bachelor's Degree</option>
+                        <option value="high school">High School</option>
+                        <option value="master's degree">Master's Degree</option>
+                        <option value="some college">Some College</option>
+                        <option value="some high school">Some High School</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Lunch Type</label>
+                    <select class="form-control" name="lunch" placeholder="Enter your Lunch" required>
+                        <option class="placeholder" selected disabled value="">Select Lunch Type</option>
+                        <option value="free/reduced">Free/Reduced</option>
+                        <option value="standard">Standard</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Test Preparation Course</label>
+                    <select class="form-control" name="test preparation course" placeholder="Enter your Course" required>
+                        <option class="placeholder" selected disabled value="">Select Test Course</option>
+                        <option value="none">None</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Reading Score (out of 100)</label>
+                    <input class="form-control" type="number" name="reading score" placeholder="Enter your Reading Score" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Writing Score (out of 100)</label>
+                    <input class="form-control" type="number" name="writing score" placeholder="Enter your Writing Score" min="0" max="100" required>
+                </div>
+
+                <div class="text-center">
+                    <input class="btn btn-primary" type="submit" value="Predict Your Math Score">
+                </div>
+            </form>
+            
+            <h2 class="result text-center">{{ results }}</h2>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

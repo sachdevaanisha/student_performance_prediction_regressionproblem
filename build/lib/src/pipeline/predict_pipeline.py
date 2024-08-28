@@ -17,7 +17,9 @@ class PredictPipeline:
 
     def predict(self, input_data):
         try:
+            logging.info(f"Input Data: {input_data}")
             df = pd.DataFrame([input_data])
+            logging.info(f"DataFrame shape after creation: {df.shape}")
 
             # Apply binary encoding
             df['gender'] = df['gender'].map({'female': 0, 'male': 1})
@@ -31,6 +33,7 @@ class PredictPipeline:
             race_ethnicity_encoded = self.encoders['one_hot_encoder'].transform(df[['race/ethnicity']])
             race_ethnicity_encoded_df = pd.DataFrame(race_ethnicity_encoded, columns=self.encoders['one_hot_encoder'].get_feature_names_out(['race/ethnicity']))
             df = pd.concat([df, race_ethnicity_encoded_df], axis=1).drop(columns=['race/ethnicity'])
+            logging.info(f"DataFrame shape after encoding: {df.shape}")
 
             logging.info("Binary, ordinal and one-hot encoding applied successfully.")
 
@@ -41,7 +44,9 @@ class PredictPipeline:
         
 
         except Exception as e:
-            raise CustomException("Error occurred during prediction.", sys)
+            logging.info(f"{e}")
+            raise CustomException(e, sys)
+            
 
 class CustomData:
     def __init__(self, gender, race_ethnicity, parental_level_of_education, lunch, test_preparation_course, reading_score, writing_score):
