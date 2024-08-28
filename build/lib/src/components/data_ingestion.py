@@ -24,13 +24,13 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Entered the initiate_data_ingestion method")
         try:
-            df = pd.read_csv('jupyter_notebook/StudentsPerformance.csv')
+            df = pd.read_csv('jupyter_nb/StudentsPerformance.csv')
             logging.info("Read dataset as a dataframe")
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
 
             df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
-            logging.info("Read and saved data in the raw_data folder.")
+            logging.info("Read and saved data in the raw_data folder. Initiated the test train split.")
 
             return(
                 self.ingestion_config.raw_data_path
